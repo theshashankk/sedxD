@@ -12,7 +12,7 @@ _get_repolink () {
         echo "https://github.com/theshashankk/Blackl-Lightning--renewed/archive/master.zip"
     elif [[ $BLACK_REPO =~ $regex ]]
     then
-        if [[ $AKITO_REPO_BRANCH ]]
+        if [[ $BLACK_REPO_BRANCH ]]
         then
             echo "${BLACK_REPO}/archive/${BLACK_REPO_BRANCH}.zip"
         else
