@@ -1,0 +1,51 @@
+#!/bin/bash
+
+
+_get_repolink () {
+    local regex
+    regex='(https?)://github.com/.+/.+'
+    if [[ $BLACK_REPO == "sedxd" ]]
+    then
+        echo "https://github.com/theshashankk/Blackl-Lightning--renewed/archive/master.zip"
+    elif [[ $BLACK_REPO == "akitoxd" ]]
+    then
+        echo "https://github.com/theshashankk/Blackl-Lightning--renewed/archive/master.zip"
+    elif [[ $BLACK_REPO =~ $regex ]]
+    then
+        if [[ $AKITO_REPO_BRANCH ]]
+        then
+            echo "${BLACK_REPO}/archive/${BLACK_REPO_BRANCH}.zip"
+        else
+            echo "${BLACK_REPO}/archive/master.zip"
+        fi
+    else
+        echo "https://github.com/theshashankk/Blackl-Lightning--renewed/archive/master.zip"
+    fi
+}
+
+
+_set_bot () {
+    local zippath
+    zippath="sedxd.zip"
+    echo "  downloading ub source code ..."
+    wget -q $(_get_repolink) -O "$zippath"
+    echo "  Unpacking Data ..."
+    AKITOPATH=$(zipinfo -1 "$zippath" | grep -v "/.");
+    unzip -qq "$zippath"
+    echo "[•done•]"
+    echo "  [•Cleaning•] ..."
+    rm -rf "$zippath"
+    sleep 5
+    cd $LIGHTINGPATH
+    echo "    wait lemme start your bot    "
+    echo "
+              
+         █░░ █ █▀▀ █░█ ▀█▀ █ █▄░█ █▀▀
+         █▄▄ █ █▄█ █▀█ ░█░ █ █░▀█ █▄█
+    "
+
+    python3 ./setup/updater.py ./requirements.txt requirements.txt
+    python3 -m userbot
+}
+
+_set_bot
