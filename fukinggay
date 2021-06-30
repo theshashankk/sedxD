@@ -6,10 +6,10 @@ _get_repolink () {
     regex='(https?)://github.com/.+/.+'
     if [[ $BLACK_REPO == "sedxd" ]]
     then
-        echo "https://github.com/theshashankk/Blackl-Lightning--renewed/archive/master.zip"
+        echo "https://github.com/theshashankk/Blackl-Lightning/archive/master.zip"
     elif [[ $BLACK_REPO == "akitoxd" ]]
     then
-        echo "https://github.com/theshashankk/Blackl-Lightning--renewed/archive/master.zip"
+        echo "https://github.com/theshashankk/Blackl-Lightning/archive/master.zip"
     elif [[ $BLACK_REPO =~ $regex ]]
     then
         if [[ $BLACK_REPO_BRANCH ]]
@@ -19,7 +19,7 @@ _get_repolink () {
             echo "${BLACK_REPO}/archive/master.zip"
         fi
     else
-        echo "https://github.com/theshashankk/Blackl-Lightning--renewed/archive/master.zip"
+        echo "https://github.com/theshashankk/Blackl-Lightning/archive/master.zip"
     fi
 }
 
